@@ -16,8 +16,8 @@
 Počet opakování: <input name="pocet" value="3"/> </br>
 Slovo k opakování: <input name="brum" value="Tři" /></p>
 Co bys rád? </br>
-Odrážky?<input type="radio" name="stejne" value="prvni">
-Odstavce? <input type="radio" name="stejne" value="druha">
+Číslovaný seznam?<input type="radio" name="stejne" value="prvni" checked = "checked">
+? <input type="radio" name="stejne" value="druha">
 <input type = "submit"/>
 </form>
 
@@ -27,10 +27,23 @@ Odstavce? <input type="radio" name="stejne" value="druha">
 	print $_REQUEST["pocet"];
 	print $_REQUEST["brum"];
 	print "</p><b><h1>Výsledek:</h1></b>";
-	print "<ol>";
+	
+	if ($_REQUEST["stejne"]=="prvni") {
+		print "<ol>";
 	for ($i = 0; $i<$_REQUEST["pocet"]; $i++)  { 
 		print  "<li><b>".$i.$_REQUEST["brum"]."</b></li>" ;
 		
+	}
+	print "</ol>";
+	}
+	else {
+		print "<ul>";
+		for ($i = 0; $i<$_REQUEST["pocet"]; $i++)  { 
+		print  "<li>".$i.$_REQUEST["brum"]."</li>" ;
+		
+		
+	}
+	print "</ul>";
 	}
 	
 ?>
