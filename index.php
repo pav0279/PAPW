@@ -18,8 +18,8 @@ Slovo k opakování: <input name="brum" value="Tři" /></p>
 Co bys rád? </br>
 Číslovaný seznam?<input type="radio" name="stejne" value="prvni" checked = "checked">
 ? <input type="radio" name="stejne" value="druha">
-<input type = "submit"/>
-<textarea name="text1">
+<input type = "submit"/></br>
+Zadejte text oddělený mezerou: <textarea name="text1">
 </textarea>
 </form>
 
