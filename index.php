@@ -31,10 +31,12 @@ Co bys rád? </br>
 	print "<p>".$_REQUEST["text1"]."</p>";
 	$pocet_znaku = strlen($_REQUEST["text1"]);
 	$pieces =explode(" ",$_REQUEST["text1"]);
+	print "<h2>"."Druhý znak:"."</h2>";
 	print "<p>".$pieces[1]."</p>";
-	
+	print "<h2>"."Počet znaků:"."</h2>";
 	echo $pocet_znaku;
 	print "</p><b><h1>Výsledek:</h1></b>";
+	
 	
 	if ($_REQUEST["stejne"]=="prvni") {
 		print "<ol>";
