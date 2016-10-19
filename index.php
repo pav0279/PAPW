@@ -19,6 +19,8 @@ Co bys rád? </br>
 Číslovaný seznam?<input type="radio" name="stejne" value="prvni" checked = "checked">
 ? <input type="radio" name="stejne" value="druha">
 <input type = "submit"/>
+<textarea name="text1">
+</textarea>
 </form>
 
 
@@ -26,6 +28,12 @@ Co bys rád? </br>
 <?php
 	print $_REQUEST["pocet"];
 	print $_REQUEST["brum"];
+	print "<p>".$_REQUEST["text1"]."</p>";
+	$pocet_znaku = strlen($_REQUEST["text1"]);
+	$pieces =explode(" ",$_REQUEST["text1"]);
+	print "<p>".$pieces[1]."</p>";
+	
+	echo $pocet_znaku;
 	print "</p><b><h1>Výsledek:</h1></b>";
 	
 	if ($_REQUEST["stejne"]=="prvni") {
@@ -45,6 +53,7 @@ Co bys rád? </br>
 	}
 	print "</ul>";
 	}
+	
 	
 ?>
 </body>
