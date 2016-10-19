@@ -35,9 +35,15 @@ Zadejte text oddělený mezerou: <textarea name="text1">
 	print "<p>".$pieces[1]."</p>";
 	print "<h2>"."Počet znaků:"."</h2>";
 	echo $pocet_znaku;
+	
+	print "<h2>"."Tučná Ostrava: "."</h2>";
+	foreach ($pieces as $value)  { 
+		if ($value=="Ostrava") {
+		print  "<h3>".$value."</h3>";
+		
+		}
+	}
 	print "</p><b><h1>Výsledek:</h1></b>";
-	
-	
 	if ($_REQUEST["stejne"]=="prvni") {
 		print "<ol>";
 	for ($i = 0; $i<$_REQUEST["pocet"]; $i++)  { 
