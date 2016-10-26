@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="">
-<head>  
-
+  <head>  
+  
     <title>PAW</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="robots" content="index, follow">
+	<meta name="revisit-after" content="7 days">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		
-	   </style>        
+	        
 </head>
 <body>
 <form>
-Počet opakování: <input name="pocet" value="3"/> </br>
-Slovo k opakování: <input name="brum" value="Tři" /></p>
-Co bys rád? </br>
-Číslovaný seznam?<input type="radio" name="stejne" value="prvni" checked = "checked">
-? <input type="radio" name="stejne" value="druha">
-<input type = "submit"/></br>
-Zadejte text oddělený mezerou: <textarea name="text1">
-</textarea>
+	<p>
+	Počet:<input type="number" name="pocet" min="0" max="100" step="1" value="30">
+	Info:<input name="info" value="FFF"/>
+	Birthday (date and time): <input type="datetime-local" name="bdaytime">
+	<input type="radio" name="style" value="li" checked> Odrážka<br>
+	<input type="radio" name="style" value="p"> Odstavec<br>
+	<textarea name="text1" rows="20" cols="100">
+		Ostrava je pěkná díra. Vítejte v Ostravě. V Ostravě je pěkně. Ostravou táhnou šílené opice.
+	</textarea>
+	<input type="submit"/>	
+	</p>
 </form>
-
-
-
 <?php
-	print $_REQUEST["pocet"];
-	print $_REQUEST["brum"];
-	print "<p>".$_REQUEST["text1"]."</p>";
-	$pocet_znaku = strlen($_REQUEST["text1"]);
-	$pieces =explode(" ",$_REQUEST["text1"]);
-	print "<h2>"."Druhý znak:"."</h2>";
-	print "<p>".$pieces[1]."</p>";
-	print "<h2>"."Počet znaků:"."</h2>";
-	echo $pocet_znaku;
+	echo "<h1>Ahoj Karle</h1>";
+	echo "<p>".$_REQUEST["text1"]."</p>";
 	
-	print "<h2>"."Tučná Ostrava: "."</h2>";
-	foreach ($pieces as $value)  { 
-		if ($value=="Ostrava") {
-		print  "<h3>".$value."</h3>";
-		
+	$pocet_znaku = strlen($_REQUEST["text1"]);
+	echo "<p>".$pocet_znaku."</p>";
+	
+	$pieces = explode(" ", $_REQUEST["text1"]);
+	/*
+	echo "<p>".$pieces[0]."</p>"; // piece1
+	echo "<p>".$pieces[1]."</p>"; // piece2
+	*/
+	
+	/*
+	foreach ($pieces as $value) {
+		echo "<p>".$value."</p>";
+	}
+	*/
+	
+	$ostrava = array("Ostrava", "Ostravě", "Ostravou"); 
+	
+	for ($i=0; $i<count($pieces); $i++) {
+		$word = trim($pieces[$i], ". \t\n");
+		$word = str_replace(".", "", $word);
+		if (in_array($word, $ostrava)) {
+			$pieces[$i] = "<strong>".$pieces[$i]."</strong>";
 		}
 	}
-	print "</p><b><h1>Výsledek:</h1></b>";
-	if ($_REQUEST["stejne"]=="prvni") {
-		print "<ol>";
-	for ($i = 0; $i<$_REQUEST["pocet"]; $i++)  { 
-		print  "<li><b>".$i.$_REQUEST["brum"]."</b></li>" ;
-		
+	$text1_strong_ostrava = implode(" ", $pieces);
+	echo "<p>".$text1_strong_ostrava."</p>";
+	/*
+	echo "<ol>";
+	for ($i=1; $i<=$_REQUEST["pocet"]; $i++) {
+		if ($_REQUEST["style"] == "li") {
+			echo "<li>Odrážka č.".$i." ".$_REQUEST["info"]."</li>";
+		} else {
+			echo "<p>Odstavec č.".$i." ".$_REQUEST["info"]."</p>";
+		}
 	}
-	print "</ol>";
-	}
-	else {
-		print "<ul>";
-		for ($i = 0; $i<$_REQUEST["pocet"]; $i++)  { 
-		print  "<li>".$i.$_REQUEST["brum"]."</li>" ;
-		
-		
-	}
-	print "</ul>";
-	}
-	
-	
+	echo "</ol>";	
+	*/
 ?>
 </body>
 </html>
-
